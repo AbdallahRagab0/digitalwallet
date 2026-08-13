@@ -1,0 +1,227 @@
+﻿@{
+	ViewData["Title"] = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+
+	<style>
+			body {
+				font-family: Arial;
+				background-color: #f2f2f2;
+			}
+
+			.login-box {
+				width: 50%;
+				margin: 100px auto;
+				background-color: white;
+				padding: 25px;
+				border-radius: 10px;
+				box-shadow: 0 0 10px gray;
+				text-align: center;
+			}
+
+			h6 {
+				text-align: left;
+			}
+
+			.buttons_db {
+				width: 95%;
+				height: 40%;
+				padding: 10px;
+				margin: 8px 0;
+				background-color: #2B5748;
+				color: white;
+				border: none;
+				font-size: 20px;
+				/*  cursor: pointer; */
+				border-radius: 5px;
+				border: 2px solid black;
+				display: block;
+			}
+
+			.texts_db {
+				width: 95%;
+				padding: 10px;
+				margin: 8px 0;
+				background-color: black;
+				color: white;
+				border: none;
+				font-size: 16px;
+				cursor: pointer;
+				border-radius: 5px;
+				display: block;
+			}
+
+			.buttons_db:hover {
+				background-color: #9CB080;
+			}
+
+			.register-link {
+				margin-top: 15px;
+			}
+
+				.register-link a {
+					color: #007bff;
+					text-decoration: none;
+				}
+
+					.register-link a:hover {
+						text-decoration: underline;
+					}
+
+			.back_button {
+				background-color: orange;
+			}
+
+				.back_button:hover {
+					background-color: darkorange;
+				}
+
+			.Logout_button {
+				background-color: red;
+				margin-top: 15px;
+			}
+
+				.Logout_button:hover {
+					background-color: darkred;
+				}
+
+			.wallet-header {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 12px;
+				margin-bottom: 15px;
+			}
+
+			.wallet-logo {
+				width: 170px;
+				height: 170px;
+				object-fit: contain;
+			}
+
+			.wallet-header h2 {
+				margin: 0;
+			}
+	</style>
+</head>
+
+<body>
+
+	<div class="login-box">
+
+		<img src="~/images/Digital wallet photo.png"
+			 class="wallet-logo"
+			 alt="Wallet Logo" />
+
+		<h2>Welcome to your wallet @ViewBag.UserName</h2>
+
+		<div style="display:flex">
+			<div style="width:30%">
+
+				<form method="post">
+
+					<button type="submit"
+							class="buttons_db"
+							asp-controller="Home"
+							asp-action="AddMoneyPage">
+						Add Money
+					</button>
+
+					<button type="submit"
+							class="buttons_db"
+							asp-controller="Home"
+							asp-action="SendMoneyPage">
+						Send Money
+					</button>
+
+					<button type="submit"
+							class="buttons_db"
+							asp-controller="Home"
+							asp-action="ChangePasswordPage">
+						Change Password
+					</button>
+
+					<button type="submit"
+							class="buttons_db"
+							asp-controller="Home"
+							asp-action="DisplayTransactionsHistory">
+						Transactions History
+					</button>
+
+				</form>
+
+			</div>
+			<div style="width:10%"></div>
+			<div style="width:60%">
+				<div style="display:flex">
+					<div class="texts_db" style="width:48%">
+						<h6>Phone number:</h6>
+						<h3>@ViewBag.UserPhonenum</h3>
+						
+					</div>
+					<div style="width:4%"></div>
+					<div class="texts_db" style="width:48%">
+						<h6>added money:</h6>
+						<h3>@ViewBag.SumOfAddMoney</h3>
+					</div>
+				</div>
+				<div style="display:flex">
+					<div class="texts_db" style="width:48%">
+						<h6> sent money:</h6>
+						<h3> @ViewBag.SumOfSendMoney</h3>
+					</div>
+					<div style="width:4%"></div>
+					<div class="texts_db" style="width:48%">
+						<h6> received money:</h6>
+						<h3>@ViewBag.SumOfReceiveMoney</h3>
+					</div>
+				</div>
+				<div class="texts_db">
+
+					<h6>current balance:</h6>
+					<h3>@ViewBag.UserBalance</h3>
+
+				</div>
+			</div>
+
+		</div>
+		<div>
+			<form method="post">
+				<p>
+					<button type="submit"
+							class="buttons_db Logout_button"
+							asp-controller="Home"
+							asp-action="Logout">
+						Logout
+
+					</button>
+				</p>
+			</form>
+
+		</div>
+	</div>
+	@if (ViewBag.RegisterResponse != null)
+	{
+		<h3>@ViewBag.RegisterResponse</h3>
+	}
+
+	@if (ViewBag.Message != null)
+	{
+		<h3>@ViewBag.Message</h3>
+	}
+
+	@if (ViewBag.ChangePasswordResponse != null)
+	{
+		<h3>@ViewBag.ChangePasswordResponse</h3>
+	}
+
+            
+
+</body>
+</html>
+
+        

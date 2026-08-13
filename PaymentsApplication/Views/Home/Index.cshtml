@@ -1,0 +1,43 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Basic MVC Test";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Basic MVC Test</title>
+</head>
+<body>
+
+   
+
+    <!--
+        عند الضغط على الزر سيتم إرسال طلب POST
+        إلى الميثود Execute داخل HomeController
+    -->
+    <form method="post">
+        <button asp-controller="Home" asp-action="Register"> register </button>
+        <button asp-controller="Home" asp-action="Login"> login </button>
+        <button asp-controller="Home" asp-action="AddMoney"> add money </button>
+        <button asp-controller="Home" asp-action="SendMoney"> send money </button>
+        <button asp-controller="Home" asp-action="ChangePassword"> change password </button>
+        <button asp-controller="Home" asp-action="DisplayTransactionsHistory">transactions history</button>
+    </form>
+
+    <hr />
+
+    <!-- عرض النتيجة إذا كانت موجودة -->
+    @if (ViewBag.Result != null)
+    {
+        <p>
+            <strong>Result:</strong>
+            @ViewBag.Result
+        </p>
+    }
+
+</body>
+</html>
